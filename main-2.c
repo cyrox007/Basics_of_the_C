@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    int x; // сюда будем принимать килограммы
+    int x; // Р—РґРµСЃСЊ Р±СѓРґРµРј С…СЂР°РЅРёС‚СЊ РєРёР»РѕРіСЂР°РјРјС‹
     int cost = 5;
     float sale = 20;
     
