@@ -11,11 +11,17 @@ int main(int argc, char const *argv[]) {
 
     // Получаем объем электроэнергии
     printf("Enter used power: ");
-    scanf("%d", &power);
+    if (!scanf("%d", &power)) {
+        printf("Error! Invalid value \n");
+        return 0;
+    }
 
     // Получаем время
     printf("Enter finished time (hours): ");
-    scanf("%d", &hours);
+    if (!scanf("%d", &hours)) {
+        printf("Error! Invalid value \n");
+        return 0;
+    }
 
     /* Время приводиться в 24-х часовом формате.
         Значение времени мы получаем в часах. 
