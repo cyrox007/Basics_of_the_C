@@ -8,21 +8,21 @@ Enter finished time (hours): 5
 ----
 Total price: 30
 ```
-```
+``` console
 ./calculate.bin
 Enter used power: 30
 Enter finished time (hours): 12
 ----
 Total price: 60
 ```
-```
+``` console
 ./calculate.bin
 Enter used power: 30
 Enter finished time (hours): 19
 ----
 Total price: 90
 ```
-```
+``` console
 ./calculate.bin
 Enter used power: 30
 Enter finished time (hours): 24
