@@ -37,7 +37,7 @@ int main(int argc, char const *argv[]) {
         printf("The time is specified incorrectly");
         return 0;
     }
-    
+    puts("------------");
     printf("Total price: $%d", result);
     return 0;
 }
