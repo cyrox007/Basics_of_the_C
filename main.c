@@ -17,9 +17,10 @@ int main(int argc, char const *argv[]) {
     printf("Enter finished time (hours): ");
     scanf("%d", &hours);
 
-    /* Время приводиться в 24-х часовом формате. 
-        24-й час всегда равняется нулю. 
-        время никогда не превышает 24 часа */
+    /* Время приводиться в 24-х часовом формате.
+        Значение времени мы получаем в часах. 
+        24-й час всегда будет равняеться нулю. 
+        Время никогда не превышает 24 часа */
     if (hours >= 0 && hours < 8) {
         result = power * costNight;
     } else if (hours >= 8 && hours < 16) {
@@ -32,6 +33,5 @@ int main(int argc, char const *argv[]) {
     }
     
     printf("Total price: $%d", result);
-    
     return 0;
 }
