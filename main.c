@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
         result = power * costEvening;
     } else {
         printf("The time is specified incorrectly");
-        return 0;
+        // return 0;
     }
     puts("------------");
     printf("Total price: $%d", result);
