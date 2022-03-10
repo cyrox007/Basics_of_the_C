@@ -38,5 +38,4 @@ Exit 0
 
 ## Задача 2
 Заполнить экран терминала случайными падающими цифрами сверху (эффект матрицы), как в анимации (цвет можно использовать стандартный).
-<img src="https://gifer.com/embed/NvL" alt="Matrix">
-![screen-gif](https://i.gifer.com/NvL.gif "Matrix")
+![screen-gif](./NvL.gif "Matrix")
