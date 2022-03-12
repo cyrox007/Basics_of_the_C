@@ -6,9 +6,11 @@
 #include "cross-platform.h" // адаптация приложения под windows и unix
 
 void delay (unsigned int msecs) { // функция задержки
-    clock_t goal = msecs * CLOCKS_PER_SEC / 1000 + clock();  // конвертировать msecs в счетчик часов
-    while ( goal > clock() );               // Цикл, пока не закончиться
+    clock_t goal = msecs * CLOCKS_PER_SEC / 1000 + clock(); // конвертировать msecs в счетчик часов
+    while ( goal > clock() ); // Цикл, пока не закончиться
 }
+
+
 
 int main(int argc, char const *argv[])
 {
@@ -27,24 +29,34 @@ int main(int argc, char const *argv[])
         printf("Error!");
         exit(-1);
     }
-       
-    clear_screen(); // отчищаем экран
+    //printf("\033[32m ");
+    //clear_screen(); // отчищаем экран
 
-    int col = size.ws_col/2;
-    int row = size.ws_row;
+    int col = 15; //size.ws_col/2;
+    int row = 15; //size.ws_row;
 
     char matrix[col][row]; // массив
+    memset(&matrix[0][0], 0, sizeof(matrix));
     
+    /*  Выбрать случайный пустой стобец i 
+        Заполнить 4-мя символами. 
+        Выбрать следующий случайный пустой столбец
+        Снова заполнить
+    */
+
     for (int i = 0; i < row; i++) { // заполняем массив
-        for (int j = 0; j < col; j++) {
-            matrix[i][j] = rand()%10;
+        for (int j = 0; j < col; j = j + 3) { // каждый 3й символ в строке
+            matrix[i][j] = malloc(sizeof(char));
+            sprintf(&matrix[i][j], "%d", rand()%10);
         }
     }
 
-    for (int i = 1; i < row; i++) { // выводим на экран содержимое
+    for (int i = 0; i < row; i++) { // выводим на экран содержимое
         for (int j = 0; j < col; j++) {
-            
-            printf("\033[32m %d", matrix[i][j]);
+            if (strcmp("", &matrix[i][j]) == 0) {
+                printf(" ");
+            }
+            printf("%c", matrix[i][j]);
         }
         printf("\n");
         delay(200);
