@@ -10,7 +10,9 @@ void delay (unsigned int msecs) { // функция задержки
     while ( goal > clock() ); // Цикл, пока не закончиться
 }
 
-
+void matrix_animate(int col, int row) {
+    int i = rand()%col; // Выбираем случаный столбец
+}
 
 int main(int argc, char const *argv[])
 {
@@ -37,19 +39,33 @@ int main(int argc, char const *argv[])
 
     char matrix[col][row]; // массив
     memset(&matrix[0][0], 0, sizeof(matrix));
-    
-    /*  Выбрать случайный пустой стобец i 
+
+    /*
+        В коде ошибка! Код должен двигаться сверху вних, 
+        а не снизу вверх как у меня. А это значит.
+        Я сначала должен отобразить весь массив сразу. Пустой.
+        Выбрать случайный столбец.
+        Проверить есть ли в нем что-то
+        Заполнить.
+        Обновить массив.
+    */
+    /*  
+        Выбрать случайный пустой стобец i 
         Заполнить 4-мя символами. 
         Выбрать следующий случайный пустой столбец
         Снова заполнить
     */
-
-    for (int i = 0; i < row; i++) { // заполняем массив
+    int select_column = rand()%col; // Выбираем случайный столбец
+    for (int i = 0; i < 4; i++) { // Заполняем его
+        matrix[i][select_column] = malloc(sizeof(char));
+        sprintf(&matrix[i][select_column], "%d", rand()%10);
+    }
+    /* for (int i = 0; i < row; i++) { // заполняем массив
         for (int j = 0; j < col; j = j + 3) { // каждый 3й символ в строке
             matrix[i][j] = malloc(sizeof(char));
             sprintf(&matrix[i][j], "%d", rand()%10);
         }
-    }
+    } */
 
     for (int i = 0; i < row; i++) { // выводим на экран содержимое
         for (int j = 0; j < col; j++) {
