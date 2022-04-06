@@ -8,28 +8,29 @@ int main(int argc, char const *argv[]) {
     char login[6]; // Сюда принимаем Логин от пользователя.
     char password[6]; // Сюда принимаем пароль от пользователя.
 
-    int i = 0; // Создаем счетчик попыток.
-    while (i < 5) { // программа выполняеться пока счетчик попыток не достигнет 5,
+    // int i = 0; // Создаем счетчик попыток.
+    for (int i = 0; i < 5; i++) { // программа выполняеться пока счетчик попыток не достигнет 5,
         if (i == 3) { // если кол-во попыток достигнет 3х, то...
             printf("\nWaiting 3 secs ...");
             sleep(3); // устанавливаем задержку 3 сек.
         }
         
         printf("\nEnter login: ");
-        scanf("%s", &login); // Вводим логин.
+        scanf("%s", login); // Вводим логин.
 
         printf("Enter password: ");
-        scanf("%s", &password); // Вводим пароль.
+        scanf("%s", password); // Вводим пароль.
         
         if (correct_auth(login, password) == 0) { // Если наша функция вернет успех выполнения, то
-            printf("Welcome ADMIN!"); // сообщаем об успехе, и ...
-            i = 0; // обнуляем счетчик.
+            printf("Welcome ADMIN!\n"); // сообщаем об успехе, и ...
+            break;
+            // i = 0; // обнуляем счетчик.
         } else { // В противном случае
-            printf("User with such credentials was not found"); // сообщаем об ошибке, и
-            i++; // увеличиваем счетчик.
+            printf("User with such credentials was not found\n"); // сообщаем об ошибке, и
+            // i++; // увеличиваем счетчик.
         }
     }
-    printf("Exit 0"); // Сообщаем о завершении программы
+    printf("Exit 0\n"); // Сообщаем о завершении программы
     return 0;
 }
 
@@ -40,7 +41,7 @@ int correct_auth(char login[], char password[]) {
     if (strcmp(username, login) == 0 && 
         strcmp(userpassword, password) == 0) { // Если логин и пароль совпадут,
         return 0; // возвращаем 0.
-    } else { // Если не совпадет логин или пароль, то.
+    } /* else { // Если не совпадет логин или пароль, то.
         return 1; // вернем 1.
-    }
+    } */
 }
