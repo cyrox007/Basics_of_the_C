@@ -10,10 +10,6 @@ void delay (unsigned int msecs) { // функция задержки
     while ( goal > clock() ); // Цикл, пока не закончиться
 }
 
-void matrix_animate(int col, int row) {
-    int i = rand()%col; // Выбираем случаный столбец
-}
-
 int main(int argc, char const *argv[])
 {    
     struct winsize size;
@@ -35,8 +31,9 @@ int main(int argc, char const *argv[])
 
     for (int i = 0; i < row; i++) { // заполняем массив
         for (int j = 0; j < col; j = j + 3) { // каждый 3й символ в строке
+            int var = rand()%10;
             matrix[i][j] = malloc(sizeof(char));
-            sprintf(&matrix[i][j], "%d", rand()%10);
+            sprintf(&matrix[i][j], "%d", var);
         }
     }
 
