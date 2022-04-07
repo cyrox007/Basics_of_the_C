@@ -24,10 +24,8 @@ int main(int argc, char const *argv[]) {
         if (correct_auth(login, password) == 0) { // Если наша функция вернет успех выполнения, то
             printf("Welcome ADMIN!\n"); // сообщаем об успехе, и ...
             break;
-            // i = 0; // обнуляем счетчик.
         } else { // В противном случае
             printf("User with such credentials was not found\n"); // сообщаем об ошибке, и
-            // i++; // увеличиваем счетчик.
         }
     }
     printf("Exit 0\n"); // Сообщаем о завершении программы
@@ -41,7 +39,5 @@ int correct_auth(char login[], char password[]) {
     if (strcmp(username, login) == 0 && 
         strcmp(userpassword, password) == 0) { // Если логин и пароль совпадут,
         return 0; // возвращаем 0.
-    } /* else { // Если не совпадет логин или пароль, то.
-        return 1; // вернем 1.
-    } */
+    }
 }
