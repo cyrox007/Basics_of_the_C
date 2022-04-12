@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <windows.h>
+#include <Windows.h>
 #include <time.h>
 
 void delay (unsigned int msecs) { // функция задержки
@@ -7,26 +7,21 @@ void delay (unsigned int msecs) { // функция задержки
     while ( goal > clock() ); // Цикл, пока не закончиться
 }
 
+CONSOLE_SCREEN_BUFFER_INFO csbiData;
+
 int main(int argc, char const *argv[])
 {
-    HANDLE hWndConsole;
-    if (hWndConsole = GetStdHandle(-12))
-    {
-        CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-        if (GetConsoleScreenBufferInfo(hWndConsole, &consoleInfo))
-        {
-            int widht = consoleInfo.srWindow.Right - consoleInfo.srWindow.Left + 1;
-            int height = consoleInfo.srWindow.Bottom - consoleInfo.srWindow.Top + 1;
-            printf("Widht: %d\n", widht);
-            printf("Height: %d\n", height);
-        }
-        else
-            printf("Error: %d\n", GetLastError());
-    }
-    else
-        printf("Error: %d\n", GetLastError());
-    int col = height;
-    int row = widht;
+    DWORD dwWidht, dwHeightWnd, dwHeightBuf, dwErrCode;
+    CHAR* szSysMsg = NULL; //LPTSTR lpszSysMsg = NULL;
+    BOOL bRet;
+    HANDLE hWndCon = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (FALSE != hWndCon)GetConsoleScreenBufferInfo(hWndCon, &csbiData);
+ 
+    dwWidht = csbiData.dwSize.X; // Ширина буфера / окна
+    dwHeightBuf = csbiData.dwSize.Y; // Высота буфера
+    dwHeightWnd = csbiData.srWindow.Bottom + 1; // Высота окна
+    int col = dwHeightWnd;
+    int row = dwWidht;
 
     printf("\033[32m ");
     system("cls");
