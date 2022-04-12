@@ -9,10 +9,24 @@ void delay (unsigned int msecs) { // функция задержки
 
 int main(int argc, char const *argv[])
 {
-    HANDLE hWinConsole;
-    CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-    int col = consoleInfo.srWindow.Bottom - consoleInfo.srWindow.Top + 1;
-    int row = consoleInfo.srWindow.Right - consoleInfo.srWindow.Left + 1;
+    HANDLE hWndConsole;
+    if (hWndConsole = GetStdHandle(-12))
+    {
+        CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+        if (GetConsoleScreenBufferInfo(hWndConsole, &consoleInfo))
+        {
+            int widht = consoleInfo.srWindow.Right - consoleInfo.srWindow.Left + 1;
+            int height = consoleInfo.srWindow.Bottom - consoleInfo.srWindow.Top + 1;
+            printf("Widht: %d\n", widht);
+            printf("Height: %d\n", height);
+        }
+        else
+            printf("Error: %d\n", GetLastError());
+    }
+    else
+        printf("Error: %d\n", GetLastError());
+    int col = height;
+    int row = widht;
 
     printf("\033[32m ");
     system("cls");
