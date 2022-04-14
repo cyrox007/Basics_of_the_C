@@ -2,9 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void print_animal();
-void print_human();
-void print_car();
+#include "prototype.h"
 
 int main(int argc, char const *argv[])
 {
